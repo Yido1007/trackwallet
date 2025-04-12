@@ -16,46 +16,68 @@ class ApiService extends GetxService {
   // Function that starts the service and makes Dio systems
   Future<ApiService> init() async {
     //Start Dio with basic settings
-    _dio = Dio(BaseOptions(
-      baseUrl: ApiConstant.baseUrl, // API adress
-      connectTimeout: Duration(seconds: 10), 
-      receiveTimeout: Duration(seconds: 10), 
-      contentType: "application/json" 
-    ));
+    _dio = Dio(
+      BaseOptions(
+        baseUrl: ApiConstant.baseUrl, // API adress
+        connectTimeout: Duration(seconds: 10),
+        receiveTimeout: Duration(seconds: 10),
+        contentType: "application/json",
+      ),
+    );
     // Interceptor that will run on every request
-    _dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) async {
-        final token = _storage.getValue<String>(StorageKeys.userToken);
-        if (token != null) {
-          options.headers['Authorization'] = 'Bearer $token';
-        }
-        return handler.next(options);
-      },
-      onError: (error, handler) async {
-        if (error.response?.statusCode == 401) {
-          await _storage.remove(StorageKeys.userToken);
-        }
-        return handler.next(error);
-      },
-    ));
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final token = _storage.getValue<String>(StorageKeys.userToken);
+          if (token != null) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+          return handler.next(options);
+        },
+        onError: (error, handler) async {
+          if (error.response?.statusCode == 401) {
+            await _storage.remove(StorageKeys.userToken);
+          }
+          return handler.next(error);
+        },
+      ),
+    );
 
     return this;
   }
 
   // Method to send GET request
-  Future<Response> get(String path, {Map<String, dynamic>? queryParameters, Options? options}) async {
+  Future<Response> get(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
     try {
-      return await _dio.get(path, queryParameters: queryParameters, options: options);
+      return await _dio.get(
+        path,
+        queryParameters: queryParameters,
+        options: options,
+      );
     } catch (e) {
-      print("Dio get error $e"); 
-      rethrow; 
+      print("Dio get error $e");
+      rethrow;
     }
   }
 
   // Method to send Post request
-  Future<Response> post(String path, {dynamic data, Map<String, dynamic>? queryParameters, Options? options}) async {
+  Future<Response> post(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
     try {
-      return await _dio.post(path, data: data, queryParameters: queryParameters, options: options);
+      return await _dio.post(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
     } catch (e) {
       print("Dio post error $e");
       rethrow;
@@ -63,9 +85,19 @@ class ApiService extends GetxService {
   }
 
   // Method to send Put request
-  Future<Response> put(String path, {dynamic data, Map<String, dynamic>? queryParameters, Options? options}) async {
+  Future<Response> put(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
     try {
-      return await _dio.put(path, data: data, queryParameters: queryParameters, options: options);
+      return await _dio.put(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
     } catch (e) {
       print("Dio put error $e");
       rethrow;
@@ -73,9 +105,19 @@ class ApiService extends GetxService {
   }
 
   // Method to send Delete request
-  Future<Response> delete(String path, {dynamic data, Map<String, dynamic>? queryParameters, Options? options}) async {
+  Future<Response> delete(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
     try {
-      return await _dio.delete(path, data: data, queryParameters: queryParameters, options: options);
+      return await _dio.delete(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
     } catch (e) {
       print("Dio delete error $e");
       rethrow;
