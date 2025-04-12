@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:trackwallet/module/login/login_controller.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends GetView<LoginController> {
   const LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          onPressed: () {},
-          child: Text("Google ile Giriş "),
+          onPressed: () {
+            controller.googleSignController();
+          },
+          child: Text("Google ile Giriş"),
         ),
       ),
     );

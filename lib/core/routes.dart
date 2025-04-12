@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:trackwallet/home.dart';
+import 'package:trackwallet/screen/home.dart';
 import 'package:trackwallet/module/home/home_binding.dart';
 import 'package:trackwallet/module/login/login_binding.dart';
 import 'package:trackwallet/module/splash/splash_binding.dart';
