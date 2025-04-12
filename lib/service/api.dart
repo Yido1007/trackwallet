@@ -3,19 +3,20 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:trackwallet/service/storage.dart';
 
-// API için sabit değerlerin tanımlandığı soyut sınıf
+
 abstract class ApiConstant {
-  static const baseUrl = ""; // API'nin temel adresi burada tanımlanmalı
+  static const baseUrl = ""; 
 }
 
 // GetX service class:
 class ApiService extends GetxService {
-  final Storage _storage = Get.find<Storage>();
+  late Storage _storage;
   late Dio _dio;
 
   // Function that starts the service and makes Dio systems
   Future<ApiService> init() async {
-    //Start Dio with basic settings
+    //Start Dio and storage with basic settings
+    Get.find<Storage>();
     _dio = Dio(
       BaseOptions(
         baseUrl: ApiConstant.baseUrl, // API adress

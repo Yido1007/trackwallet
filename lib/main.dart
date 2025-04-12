@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:trackwallet/core/app_binding.dart';
 import 'package:trackwallet/core/routes.dart';
-import 'package:trackwallet/home.dart';
 
 void main() {
   runApp(const MainApp());
@@ -17,9 +17,11 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: AppRoute.initial,
-      home: HomeScreen(),
+      getPages: AppScreen.pages,
+      initialBinding: AppBinding(),
     );
   }
 }

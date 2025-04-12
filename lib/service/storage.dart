@@ -9,9 +9,9 @@ class Storage extends GetxController {
   late final SharedPreferences _preferences;
 
   //Create Shared Preferences Class
-  Future<SharedPreferences> init() async {
+  Future<Storage> init() async {
     _preferences = await SharedPreferences.getInstance();
-    return _preferences;
+    return this;
   }
 
   // It is a function written to save different types of data to the device's local memory using Shared Preferences.
