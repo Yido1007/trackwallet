@@ -3,9 +3,14 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:trackwallet/service/storage.dart';
 
-
 abstract class ApiConstant {
-  static const baseUrl = ""; 
+  static const baseUrl = "https://gelir-gider-backend.onrender.com/api";
+  static const String login = "/auth/google";
+  static const String profile = "/auth/profile";
+  static const String categories = "/categories";
+  static const String transactions = "/transactions";
+  static const String serverClientId =
+      "'450435484678-5ph6ljrtatan2819jv4cmdg47e0d2cgp.apps.googleusercontent.com'";
 }
 
 // GetX service class:

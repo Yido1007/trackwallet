@@ -11,10 +11,7 @@ class Auth extends GetxService {
   Future<Auth> init() async {
     _storage = Get.find<Storage>();
     _apiService = Get.find<ApiService>();
-    _googleSignIn = GoogleSignIn(
-      serverClientId:
-          '450435484678-5ph6ljrtatan2819jv4cmdg47e0d2cgp.apps.googleusercontent.com',
-    );
+    _googleSignIn = GoogleSignIn(serverClientId: ApiConstant.serverClientId);
     return this;
   }
 
@@ -22,7 +19,6 @@ class Auth extends GetxService {
     try {
       await _googleSignIn.signOut();
       final GoogleSignInAccount? _googleUser = await _googleSignIn.signIn();
-      print("google user ${_googleUser.toString()}");
       if (_googleUser == null) return null;
       final GoogleSignInAuthentication _googleAuthentication =
           await _googleUser.authentication;
