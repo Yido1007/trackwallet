@@ -10,6 +10,8 @@ class Auth extends GetxService {
   late final ApiService _apiService;
   late final GoogleSignIn _googleSignIn;
 
+  final Rx<AppUser?> currentUser = Rx<AppUser?>(null);
+
   Future<Auth> init() async {
     _storage = Get.find<Storage>();
     _apiService = Get.find<ApiService>();
@@ -17,7 +19,7 @@ class Auth extends GetxService {
     return this;
   }
 
-  signInWithGoogle() async {
+  Future<AppUser?> signInWithGoogle() async {
     try {
       await _googleSignIn.signOut();
       final GoogleSignInAccount? _googleUser = await _googleSignIn.signIn();
@@ -36,10 +38,17 @@ class Auth extends GetxService {
         );
         print("JWT Token");
         print(response.data['token']);
+        var user = AppUser.fromJson(response.data['user']);
+        currentUser.value = user;
+        return user;
+      } else {
+        return null;
       }
       // _googleAuthentication.idToken;
     } catch (e) {
       print(e);
+      currentUser.value = null;
+      return null;
     }
   }
 
@@ -56,12 +65,33 @@ class Auth extends GetxService {
     try {
       final response = await _apiService.get(ApiConstant.profile);
       if (response.statusCode == 200) {
+        currentUser.value = AppUser.fromJson(response.data);
         return AppUser.fromJson(response.data);
       }
       return null;
     } catch (e) {
       print("Get profile error $e");
       return null;
+    }
+  }
+
+  Future<bool> isAuthenticated() async {
+    try {
+      final token = _storage.getValue<String>(StorageKeys.userToken);
+      if (token == null) {
+        currentUser.value = null;
+        return false;
+      }
+      final response = await getProfile();
+      if (response != null) {
+        currentUser.value = response;
+        return true;
+      }
+      return false;
+    } catch (e) {
+      await _storage.remove(StorageKeys.userToken);
+      currentUser.value = null;
+      return false;
     }
   }
 }

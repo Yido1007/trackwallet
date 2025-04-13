@@ -22,6 +22,13 @@ class SplashController extends BaseController {
   }
 
   Future<void> checkTokenAndRedirect() async {
-    Get.offAllNamed(AppRoute.login);
+    final _authService = Get.find<Auth>();
+    final isAuthenticated = await _authService.isAuthenticated();
+
+    if (isAuthenticated) {
+      Get.offAllNamed(AppRoute.home);
+    } else {
+      Get.offAllNamed(AppRoute.login);
+    }
   }
 }
