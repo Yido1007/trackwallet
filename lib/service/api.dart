@@ -9,19 +9,18 @@ abstract class ApiConstant {
   static const String profile = "/auth/profile";
   static const String categories = "/categories";
   static const String transactions = "/transactions";
-  static const String serverClientId =
-      "'450435484678-5ph6ljrtatan2819jv4cmdg47e0d2cgp.apps.googleusercontent.com'";
+  static const String serverClientUrl =
+      "450435484678-5ph6ljrtatan2819jv4cmdg47e0d2cgp.apps.googleusercontent.com";
 }
 
 // GetX service class:
 class ApiService extends GetxService {
-  late Storage _storage;
+  final Storage _storage = Get.find<Storage>();
   late Dio _dio;
 
   // Function that starts the service and makes Dio systems
   Future<ApiService> init() async {
     //Start Dio and storage with basic settings
-    Get.find<Storage>();
     _dio = Dio(
       BaseOptions(
         baseUrl: ApiConstant.baseUrl, // API adress
