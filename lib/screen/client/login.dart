@@ -10,8 +10,8 @@ class LoginScreen extends GetView<LoginController> {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            controller.googleSignController();
+          onPressed: () async {
+            await controller.googleSignController();
           },
           child: Text("Google ile Giriş"),
         ),
