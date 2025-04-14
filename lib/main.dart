@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trackwallet/core/app_binding.dart';
 import 'package:trackwallet/core/routes.dart';
+import 'package:trackwallet/theme/app_theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -22,6 +23,8 @@ class _MainAppState extends State<MainApp> {
       initialRoute: AppRoute.initial,
       getPages: AppScreen.pages,
       initialBinding: AppBinding(),
+      darkTheme: AppTheme.darkTheme,
+      theme: AppTheme.lightTheme,
     );
   }
 }

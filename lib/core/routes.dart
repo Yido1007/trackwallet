@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:trackwallet/screen/home.dart';
-import 'package:trackwallet/module/home/home_binding.dart';
-import 'package:trackwallet/module/login/login_binding.dart';
-import 'package:trackwallet/module/splash/splash_binding.dart';
+import 'package:trackwallet/module/binding/home_binding.dart';
+import 'package:trackwallet/module/binding/login_binding.dart';
+import 'package:trackwallet/module/binding/splash_binding.dart';
 import 'package:trackwallet/screen/client/login.dart';
-import 'package:trackwallet/screen/client/splash.dart';
+import 'package:trackwallet/screen/static/splash.dart';
 
 abstract class AppRoute {
   static const initial = splash;
