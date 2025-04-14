@@ -36,12 +36,16 @@ class HomeScreen extends GetView<HomeController> {
         child: Icon(Icons.add_rounded, size: 32, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        gapLocation: GapLocation.center,
-        backgroundColor: AppColors.darkTiffanyBlue,
-        icons: [Icons.dashboard_outlined, Icons.person],
-        activeIndex: controller.currentIndex.value,
-        onTap: controller.changePage,
+      bottomNavigationBar: Obx(
+        () => AnimatedBottomNavigationBar(
+          gapLocation: GapLocation.center,
+          backgroundColor: AppColors.darkTiffanyBlue,
+          icons: [Icons.dashboard_outlined, Icons.person],
+          activeIndex: controller.currentIndex.value,
+          splashColor: Colors.white,
+          activeColor: Colors.white.withAlpha(100),
+          onTap: controller.changePage,
+        ),
       ),
     );
   }
