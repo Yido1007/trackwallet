@@ -1,4 +1,6 @@
 import 'package:get/instance_manager.dart';
+import 'package:trackwallet/repos/category.dart';
+import 'package:trackwallet/repos/transaction.dart';
 import 'package:trackwallet/service/api.dart';
 import 'package:trackwallet/service/auth.dart';
 import 'package:trackwallet/service/storage.dart';
@@ -25,5 +27,8 @@ class AppBinding extends Bindings {
       await service.init();
       return service;
     });
+
+    Get.put(CategoryRepos());
+    Get.put(TransactionRepos());
   }
 }
