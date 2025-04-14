@@ -1,6 +1,6 @@
 import 'package:get/instance_manager.dart';
-import 'package:trackwallet/module/controller/home_controller.dart';
-import 'package:trackwallet/module/controller/profile_controller.dart';
+import 'package:trackwallet/module/controller/home.dart';
+import 'package:trackwallet/module/controller/profile.dart';
 
 class HomeBinding extends Bindings {
   @override

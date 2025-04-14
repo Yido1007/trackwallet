@@ -1,7 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trackwallet/module/controller/home_controller.dart';
+import 'package:trackwallet/module/controller/home.dart';
 import 'package:trackwallet/screen/client/dashboard.dart';
 import 'package:trackwallet/screen/client/profile.dart';
 import 'package:trackwallet/theme/app_colors.dart';

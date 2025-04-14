@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:trackwallet/core/theme.dart';
 import 'package:trackwallet/widget/profile_card.dart';
 
-import '../../module/controller/profile_controller.dart';
+import '../../module/controller/profile.dart';
 
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({super.key});

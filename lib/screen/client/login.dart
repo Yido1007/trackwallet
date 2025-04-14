@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:trackwallet/module/controller/login_controller.dart';
+import 'package:trackwallet/module/controller/login.dart';
 
 class LoginScreen extends GetView<LoginController> {
   const LoginScreen({super.key});

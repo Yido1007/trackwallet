@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:trackwallet/module/controller/base_controller.dart';
+import 'package:trackwallet/module/controller/base.dart';
 import 'package:trackwallet/model/user.dart';
 import 'package:trackwallet/service/auth.dart';
 
