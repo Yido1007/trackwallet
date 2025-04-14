@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:trackwallet/module/controller/home_controller.dart';
 import 'package:trackwallet/screen/client/dashboard.dart';
-import 'package:trackwallet/screen/static/profile.dart';
+import 'package:trackwallet/screen/client/profile.dart';
 import 'package:trackwallet/theme/app_colors.dart';
 
 class HomeScreen extends GetView<HomeController> {

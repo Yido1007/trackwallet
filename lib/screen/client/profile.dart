@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:trackwallet/core/theme.dart';
 import 'package:trackwallet/widget/profile_card.dart';
 
 import '../../module/controller/profile_controller.dart';
@@ -32,7 +33,30 @@ class ProfileScreen extends GetView<ProfileController> {
               value: controller.user.value?.lastName ?? "",
             ),
             UserCard(title: "Mail", value: controller.user.value?.email ?? ""),
+            CardSettings(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class CardSettings extends StatelessWidget {
+  CardSettings({super.key});
+  final ThemeService themeService = Get.find<ThemeService>();
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        leading: Icon(Icons.brightness_6_outlined),
+        title: Text("Theme"),
+        trailing: Obx(
+          () => Switch(
+            value: themeService.isDarkTheme,
+            onChanged: (value) {
+              themeService.toggleTheme();
+            },
+          ),
         ),
       ),
     );

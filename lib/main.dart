@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:trackwallet/core/app_binding.dart';
+import 'package:trackwallet/module/binding/app_binding.dart';
 import 'package:trackwallet/core/routes.dart';
 import 'package:trackwallet/theme/app_theme.dart';
 

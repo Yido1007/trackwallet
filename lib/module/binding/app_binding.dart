@@ -3,6 +3,8 @@ import 'package:trackwallet/service/api.dart';
 import 'package:trackwallet/service/auth.dart';
 import 'package:trackwallet/service/storage.dart';
 
+import '../../core/theme.dart';
+
 class AppBinding extends Bindings {
   @override
   Future<void> dependencies() async {
@@ -11,6 +13,7 @@ class AppBinding extends Bindings {
       await service.init();
       return service;
     });
+    Get.put(ThemeService());
     await Get.putAsync<ApiService>(() async {
       final service = ApiService();
       await service.init();

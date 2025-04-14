@@ -2,7 +2,8 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class StorageKeys {
-  static const String  userToken = "user_token";
+  static const String userToken = "user_token";
+  static const String themeMode = "theme_mode";
 }
 
 class Storage extends GetxController {
