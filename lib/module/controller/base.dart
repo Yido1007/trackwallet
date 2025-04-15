@@ -12,7 +12,7 @@ class BaseController extends GetxController {
 
   void showErrorSnackbar({
     required String message,
-    String title = 'Hata',
+    String title = 'Error',
     Duration duration = const Duration(seconds: 3),
   }) {
     Get.snackbar(
@@ -37,7 +37,7 @@ class BaseController extends GetxController {
 
   void showSuccessSnackbar({
     required String message,
-    String title = 'Başarılı',
+    String title = 'Success',
     Duration duration = const Duration(seconds: 3),
   }) {
     Get.snackbar(

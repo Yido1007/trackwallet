@@ -13,6 +13,10 @@ class DashboardController extends BaseController {
     await getTransactions();
   }
 
+  Future<void> refreshDashboard() async {
+    await getTransactions();
+  }
+
   final myTransaction = <AppTransaction>[].obs;
 
   Future getTransactions() async {
@@ -25,5 +29,15 @@ class DashboardController extends BaseController {
     } finally {
       setLoading(false);
     }
+  }
+
+  Future<void> deleteTransactions(String id) async {
+    try {
+      final transactions = await _transactionRepos.deleteTransaction(id);
+      myTransaction.removeWhere((element) => element.id == id);
+      showSuccessSnackbar(message: "Transaction Deleted");
+    } catch (e) {
+      showErrorSnackbar(message: "An error occurred while deleting data");
+    } finally {}
   }
 }

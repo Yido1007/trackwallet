@@ -38,7 +38,7 @@ class TransactionRepos extends GetxService {
     final response = await _apiService.delete(
       "${ApiConstant.transactions}/$id",
     );
-    if (response.data == 200) {
+    if (response.statusCode == 200) {
       return true;
     }
     throw Exception("An error occurred while deleting transaction");

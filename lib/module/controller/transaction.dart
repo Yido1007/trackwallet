@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:trackwallet/model/category.dart';
 import 'package:trackwallet/model/transaction_parameters.dart';
 import 'package:trackwallet/module/controller/base.dart';
+import 'package:trackwallet/module/controller/dashboard.dart';
 import 'package:trackwallet/repos/category.dart';
 import 'package:trackwallet/repos/transaction.dart';
 
@@ -43,6 +44,7 @@ class TransactionController extends BaseController {
       );
       var result = await _transactionRepos.addTransaction(transaction);
       if (result != null) {
+        await Get.find<DashboardController>().refreshDashboard();
         Get.back();
         showSuccessSnackbar(message: "Transaction created");
         clearForm();
