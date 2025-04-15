@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:trackwallet/model/category.dart';
 import 'package:trackwallet/module/controller/base.dart';
@@ -11,6 +12,10 @@ class TransactionController extends BaseController {
   final categories = <AppCategory>[].obs;
   final selectedCategoryID = "".obs;
   final transactionType = "expense".obs;
+  final formKey = GlobalKey<FormState>();
+  final amount = 0.0.obs;
+  final description = "".obs;
+  final date = DateTime.now().obs;
 
   @override
   void onInit() async {
@@ -22,12 +27,16 @@ class TransactionController extends BaseController {
     });
   }
 
+  Future addTranaction() {
+    
+  }
+
   Future<void> loadCategories() async {
     setLoading(true);
     try {
       final result = await _categoryRepos.getCategory();
       categories.value = result;
-      getFirsCategory(); 
+      getFirsCategory();
     } catch (e) {
       showErrorSnackbar(message: e.toString());
     } finally {
