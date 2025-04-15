@@ -16,6 +16,10 @@ class TransactionController extends BaseController {
   void onInit() async {
     super.onInit();
     await loadCategories();
+
+    ever(transactionType, (callback) {
+      getFirsCategory();
+    });
   }
 
   Future<void> loadCategories() async {
@@ -23,10 +27,23 @@ class TransactionController extends BaseController {
     try {
       final result = await _categoryRepos.getCategory();
       categories.value = result;
+      getFirsCategory(); 
     } catch (e) {
       showErrorSnackbar(message: e.toString());
     } finally {
       setLoading(false);
+    }
+  }
+
+  void getFirsCategory() {
+    final filteredCategories =
+        categories
+            .where((category) => category.type == transactionType.value)
+            .toList();
+    if (filteredCategories.isNotEmpty) {
+      selectedCategoryID.value = filteredCategories.first.id;
+    } else {
+      selectedCategoryID.value = "";
     }
   }
 }
