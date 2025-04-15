@@ -18,7 +18,6 @@ IconData getCategoryIcon({
   required bool isSystem,
   required String type,
 }) {
-
   switch (iconName) {
     case 'bus':
       return Icons.directions_bus;
@@ -45,7 +44,4 @@ IconData getCategoryIcon({
     default:
       return Icons.category;
   }
-
-  // // Kullanıcı tanımlı kategoriler için tip bazlı varsayılan ikonlar
-  // return type == 'expense' ? Icons.remove_circle_outline : Icons.add_circle_outline;
 }
