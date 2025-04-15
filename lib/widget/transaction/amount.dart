@@ -9,9 +9,9 @@ class AmountArea extends GetView<TransactionController> {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        label: Text("Amount: "),
+        labelText: 'Amount',
         border: OutlineInputBorder(),
-        prefix: Icon(Icons.money_outlined),
+        prefixIcon: Icon(Icons.money_outlined),
       ),
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       onChanged: (value) {
@@ -20,7 +20,7 @@ class AmountArea extends GetView<TransactionController> {
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "Enter Amount";
+          return "Enter an amount";
         }
         final amount = double.tryParse(value);
         if (amount == null || amount <= 0) {

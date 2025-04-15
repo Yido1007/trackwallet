@@ -10,7 +10,7 @@ class SaveButton extends GetView<TransactionController> {
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       onPressed: () async {
-        await controller.addTranaction();
+        await controller.addTransaction();
       },
       label: Text(
         "Save",

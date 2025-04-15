@@ -14,8 +14,8 @@ class SplashController extends BaseController {
   }
 
   Future<void> waitForServices() async {
-    while (!Get.isRegistered<Storage>() &&
-        !Get.isRegistered<ApiService>() &&
+    while (!Get.isRegistered<Storage>() ||
+        !Get.isRegistered<ApiService>() ||
         !Get.isRegistered<Auth>()) {
       await Future.delayed(Duration(seconds: 1));
     }

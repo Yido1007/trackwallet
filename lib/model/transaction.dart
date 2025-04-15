@@ -1,22 +1,26 @@
 class AppTransaction {
-  String id;
-  int amount;
-  String type;
-  String description;
-  DateTime date;
-  String categoryId;
-  String userId;
-  Category category;
+  final String? id;
+  final String? amount;
+  final String? type;
+  final String? description;
+  final DateTime? date;
+  final String? userId;
+  final String? categoryId;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final Category? category;
 
   AppTransaction({
-    required this.id,
-    required this.amount,
-    required this.type,
-    required this.description,
-    required this.date,
-    required this.categoryId,
-    required this.userId,
-    required this.category,
+    this.id,
+    this.amount,
+    this.type,
+    this.description,
+    this.date,
+    this.userId,
+    this.categoryId,
+    this.createdAt,
+    this.updatedAt,
+    this.category,
   });
 
   factory AppTransaction.fromJson(Map<String, dynamic> json) => AppTransaction(
@@ -24,10 +28,15 @@ class AppTransaction {
     amount: json["amount"],
     type: json["type"],
     description: json["description"],
-    date: DateTime.parse(json["date"]),
-    categoryId: json["category_id"],
+    date: json["date"] == null ? null : DateTime.parse(json["date"]),
     userId: json["user_id"],
-    category: Category.fromJson(json["Category"]),
+    categoryId: json["category_id"],
+    createdAt:
+        json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+    updatedAt:
+        json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
+    category:
+        json["Category"] == null ? null : Category.fromJson(json["Category"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -36,19 +45,21 @@ class AppTransaction {
     "type": type,
     "description": description,
     "date":
-        "${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}",
-    "category_id": categoryId,
+        "${date!.year.toString().padLeft(4, '0')}-${date!.month.toString().padLeft(2, '0')}-${date!.day.toString().padLeft(2, '0')}",
     "user_id": userId,
-    "Category": category.toJson(),
+    "category_id": categoryId,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+    "Category": category?.toJson(),
   };
 }
 
 class Category {
-  String name;
-  String icon;
-  String type;
+  final String? name;
+  final String? icon;
+  final String? type;
 
-  Category({required this.name, required this.icon, required this.type});
+  Category({this.name, this.icon, this.type});
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       Category(name: json["name"], icon: json["icon"], type: json["type"]);

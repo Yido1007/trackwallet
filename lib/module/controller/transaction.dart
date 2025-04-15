@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:trackwallet/model/category.dart';
+import 'package:trackwallet/model/transaction_parameters.dart';
 import 'package:trackwallet/module/controller/base.dart';
 import 'package:trackwallet/repos/category.dart';
 import 'package:trackwallet/repos/transaction.dart';
@@ -27,8 +28,31 @@ class TransactionController extends BaseController {
     });
   }
 
-  Future addTranaction() {
-    
+  Future addTransaction() async {
+    try {
+      setLoading(true);
+      if (!formKey.currentState!.validate()) return null;
+      final transaction = Transaction(
+        id: "",
+        amount: amount.value,
+        description: description.value,
+        type: transactionType.value,
+        date: date.value,
+        categoryId: selectedCategoryID.value,
+        userId: "",
+      );
+      var result = await _transactionRepos.addTransaction(transaction);
+      if (result != null) {
+        Get.back();
+        showSuccessSnackbar(message: "Transaction created");
+        clearForm();
+      }
+    } catch (e) {
+      showErrorSnackbar(message: "An Error occured while adding transaction");
+      print(e);
+    } finally {
+      setLoading(false);
+    }
   }
 
   Future<void> loadCategories() async {
@@ -50,9 +74,17 @@ class TransactionController extends BaseController {
             .where((category) => category.type == transactionType.value)
             .toList();
     if (filteredCategories.isNotEmpty) {
-      selectedCategoryID.value = filteredCategories.first.id;
+      selectedCategoryID.value = filteredCategories.first.id!;
     } else {
       selectedCategoryID.value = "";
     }
+  }
+
+  void clearForm() {
+    amount.value = 0.0;
+    description.value = "";
+    date.value = DateTime.now();
+    transactionType.value = "expense";
+    selectedCategoryID.value = "";
   }
 }

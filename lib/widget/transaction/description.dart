@@ -9,11 +9,11 @@ class DescriptionArea extends GetView<TransactionController> {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        label: Text("Description: "),
+        labelText: 'Description',
         border: OutlineInputBorder(),
-        prefix: Icon(Icons.description_outlined),
+        prefixIcon: Icon(Icons.description_outlined),
       ),
-      maxLines: 3,
+      maxLines: 2,
       onChanged: (value) {
         controller.description.value = value;
       },
@@ -21,6 +21,7 @@ class DescriptionArea extends GetView<TransactionController> {
         if (value == null || value.isEmpty) {
           return "Enter a description";
         }
+
         return null;
       },
     );

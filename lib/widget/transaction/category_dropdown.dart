@@ -30,13 +30,13 @@ class CategoryDropDown extends GetView<TransactionController> {
                       children: [
                         Icon(
                           getCategoryIcon(
-                            iconName: category.icon,
-                            isSystem: category.isSystem,
-                            type: category.type,
+                            iconName: category.icon!,
+                            isSystem: category.isSystem!,
+                            type: category.type!,
                           ),
                         ),
                         Gap(8),
-                        Text(category.name),
+                        Text(category.name!),
                       ],
                     ),
                   ),

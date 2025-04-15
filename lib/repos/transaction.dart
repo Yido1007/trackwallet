@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:trackwallet/model/transaction.dart';
 import 'package:trackwallet/service/api.dart';
 
+import '../model/transaction_parameters.dart';
+
 class TransactionRepos extends GetxService {
   late final ApiService _apiService;
   @override
@@ -21,7 +23,7 @@ class TransactionRepos extends GetxService {
     throw Exception("An error occurred while fetching transaction");
   }
 
-  Future<AppTransaction> addTransaction(AppTransaction transaction) async {
+  Future<AppTransaction> addTransaction(Transaction transaction) async {
     final response = await _apiService.post(
       ApiConstant.transactions,
       data: transaction.toJson(),
