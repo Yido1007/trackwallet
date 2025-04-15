@@ -30,7 +30,7 @@ class HomeScreen extends GetView<HomeController> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: controller.addTransaction,
         backgroundColor: AppColors.darkHotPink,
         shape: CircleBorder(),
         child: Icon(Icons.add_rounded, size: 32, color: Colors.white),

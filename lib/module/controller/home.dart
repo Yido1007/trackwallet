@@ -15,4 +15,8 @@ class HomeController extends BaseController {
     await Get.find<Auth>().signOut();
     Get.offAllNamed(AppRoute.login);
   }
+
+  void addTransaction() {
+    Get.toNamed(AppRoute.transaction);
+  }
 }

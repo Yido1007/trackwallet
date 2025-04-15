@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:trackwallet/module/binding/transaction.dart';
+import 'package:trackwallet/screen/client/transaction.dart';
 import 'package:trackwallet/screen/home.dart';
 import 'package:trackwallet/module/binding/home.dart';
 import 'package:trackwallet/module/binding/login.dart';
@@ -12,6 +14,7 @@ abstract class AppRoute {
   static const home = "/home";
   static const login = "/login";
   static const profile = "/profile";
+  static const transaction = "/transaction";
 }
 
 class AppScreen {
@@ -30,6 +33,11 @@ class AppScreen {
       name: AppRoute.home,
       page: () => HomeScreen(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoute.transaction,
+      page: () => TransactionScreen(),
+      binding: TransactionBinding(),
     ),
   ];
 }
