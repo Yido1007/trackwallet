@@ -4,4 +4,5 @@ analyzer:
     avoid_print: ignore
     deprecated_member_use: ignore
     no_leading_underscores_for_local_identifiers: ignore
+    unnecessary_null_comparison: ignore
     unused_field: ignore
