@@ -17,27 +17,65 @@ class DashboardScreen extends GetView<DashboardController> {
             controller.isLoading
                 ? Center(child: CircularProgressIndicator())
                 : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       flex: 2,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          SummaryCard(
-                            title: "Monthly Income",
-                            amount: 150,
-                            icon: Icons.arrow_upward,
-                            color: AppColors.income,
-                            gradientColor: AppColors.incomeGradient,
-                          ),
-                          SummaryCard(
-                            title: "Monthly Expense",
-                            amount: 450,
-                            icon: Icons.arrow_upward,
-                            color: AppColors.income,
-                            gradientColor: AppColors.incomeGradient,
-                          ),
-                        ],
+                      child: Obx(
+                        () => ListView(
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.all(8),
+                          children: [
+                            SummaryCard(
+                              title: "Monthly Income",
+                              amount: controller.monthlyIncome.value,
+                              icon: Icons.arrow_upward,
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? AppColors.darkIncome
+                                      : AppColors.income,
+                              gradientColor:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? AppColors.darkIncomeGradient
+                                      : AppColors.incomeGradient,
+                            ),
+                            SummaryCard(
+                              title: "Monthly Expense",
+                              amount: controller.monthlyExpens.value,
+                              icon: Icons.arrow_downward,
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? AppColors.darkExpense
+                                      : AppColors.expense,
+                              gradientColor:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? AppColors.darkExpenseGradient
+                                      : AppColors.expenseGradient,
+                            ),
+                            SummaryCard(
+                              showSign: true,
+                              title: "Monthly Balance",
+                              amount:
+                                  (controller.monthlyIncome.value -
+                                      controller.monthlyExpens.value),
+                              icon: Icons.account_balance_wallet_outlined,
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? AppColors.darkBalance
+                                      : AppColors.balance,
+                              gradientColor:
+                                  Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? AppColors.darkBalanceGradient
+                                      : AppColors.balanceGradient,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Expanded(flex: 9, child: TransactionList()),

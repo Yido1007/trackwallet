@@ -26,6 +26,7 @@ class TransactionScreen extends GetView<TransactionController> {
                   child: Form(
                     key: controller.formKey,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         TransactionTypeSelector(),
                         Gap(10),
