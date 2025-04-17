@@ -9,7 +9,7 @@ class DescriptionArea extends GetView<TransactionController> {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Description',
+        labelText: 'Açıklama',
         border: OutlineInputBorder(),
         prefixIcon: Icon(Icons.description_outlined),
       ),
@@ -19,7 +19,7 @@ class DescriptionArea extends GetView<TransactionController> {
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "Enter a description";
+          return "Bir açıklama giriniz";
         }
 
         return null;

@@ -9,7 +9,7 @@ class AmountArea extends GetView<TransactionController> {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        labelText: 'Amount',
+        labelText: 'Miktar',
         border: OutlineInputBorder(),
         prefixIcon: Icon(Icons.money_outlined),
       ),
@@ -20,11 +20,11 @@ class AmountArea extends GetView<TransactionController> {
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return "Enter an amount";
+          return "Bir miktar giriniz";
         }
         final amount = double.tryParse(value);
         if (amount == null || amount <= 0) {
-          return "Invalid number";
+          return "Geçersiz sayı";
         }
         return null;
       },

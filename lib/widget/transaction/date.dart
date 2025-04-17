@@ -13,7 +13,7 @@ class DateArea extends GetView<TransactionController> {
   Widget build(BuildContext context) {
     return Obx(
       () => ListTile(
-        title: Text("Date"),
+        title: Text("Tarih"),
         subtitle: Text(_formatDate(controller.date.value)),
         trailing: Icon(Icons.calendar_month),
         onTap: () async {

@@ -13,7 +13,7 @@ class CategoryDropDown extends GetView<TransactionController> {
     return Obx(
       () => DropdownButtonFormField<String>(
         decoration: InputDecoration(
-          labelText: 'Category',
+          labelText: 'Kategori',
           border: OutlineInputBorder(),
         ),
         value:

@@ -13,7 +13,7 @@ class SaveButton extends GetView<TransactionController> {
         await controller.addTransaction();
       },
       label: Text(
-        "Save",
+        "Kaydet",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontStyle: FontStyle.italic,

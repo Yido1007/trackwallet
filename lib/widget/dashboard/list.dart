@@ -31,7 +31,7 @@ class TransactionList extends GetView<DashboardController> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    "There is no transaction registered yet",
+                    "Henüz kayıtlı bir işlem yok",
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color:
                           Theme.of(context).brightness == Brightness.dark

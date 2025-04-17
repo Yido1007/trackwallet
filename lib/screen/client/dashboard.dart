@@ -27,7 +27,7 @@ class DashboardScreen extends GetView<DashboardController> {
                           padding: EdgeInsets.all(8),
                           children: [
                             SummaryCard(
-                              title: "Monthly Income",
+                              title: "Aylık Gelir",
                               amount: controller.monthlyIncome.value,
                               icon: Icons.arrow_upward,
                               color:
@@ -42,7 +42,7 @@ class DashboardScreen extends GetView<DashboardController> {
                                       : AppColors.incomeGradient,
                             ),
                             SummaryCard(
-                              title: "Monthly Expense",
+                              title: "Aylık Gider",
                               amount: controller.monthlyExpens.value,
                               icon: Icons.arrow_downward,
                               color:
@@ -58,7 +58,7 @@ class DashboardScreen extends GetView<DashboardController> {
                             ),
                             SummaryCard(
                               showSign: true,
-                              title: "Monthly Balance",
+                              title: "Aylık Bakiye",
                               amount:
                                   (controller.monthlyIncome.value -
                                       controller.monthlyExpens.value),

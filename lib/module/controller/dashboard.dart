@@ -59,7 +59,7 @@ class DashboardController extends BaseController {
       myTransaction.value = transactions;
       monthlySummary();
     } catch (e) {
-      showErrorSnackbar(message: "An error occurred while fetching data");
+      showErrorSnackbar(message: "Veriler getirilirken hata oluştu");
     } finally {
       setLoading(false);
     }
@@ -71,12 +71,12 @@ class DashboardController extends BaseController {
       if (transactionResult) {
         myTransaction.removeWhere((element) => element.id == id);
         monthlySummary();
-        showSuccessSnackbar(message: "Transaction Deleted");
+        showSuccessSnackbar(message: "İşlem Silindi");
       } else {
-        showErrorSnackbar(message: "An error occurred while deleting data");
+        showErrorSnackbar(message: "Veriler silinirken hata oluştu");
       }
     } catch (e) {
-      showErrorSnackbar(message: "An error occurred while deleting data $e");
+      showErrorSnackbar(message: "Veriler silinirken hata oluştu $e");
     } finally {}
   }
 }

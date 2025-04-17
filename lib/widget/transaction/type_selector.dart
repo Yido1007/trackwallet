@@ -13,12 +13,12 @@ class TransactionTypeSelector extends GetView<TransactionController> {
         segments: [
           ButtonSegment(
             value: "expense",
-            label: Text("Expense"),
+            label: Text("Gider"),
             icon: Icon(Icons.remove_circle_outline),
           ),
           ButtonSegment(
             value: "income",
-            label: Text("Income"),
+            label: Text("Gelir"),
             icon: Icon(Icons.add_circle_outline),
           ),
         ],

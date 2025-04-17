@@ -49,7 +49,7 @@ class CardSettings extends StatelessWidget {
     return Card(
       child: ListTile(
         leading: Icon(Icons.brightness_6_outlined),
-        title: Text("Theme"),
+        title: Text("Tema"),
         trailing: Obx(
           () => Switch(
             value: themeService.isDarkTheme,
